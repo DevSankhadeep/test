@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require ("../controller/controller");
 const customersSchema = require ("../model/customers.model")
 
-router. post("/",(req,res)=>{
+router.post("/", (req, res) => {
   controller.findByAccountNo(req, res, customersSchema);
 });
 

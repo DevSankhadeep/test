@@ -5,7 +5,7 @@ const usersSchema = require ("../model/users.model")
 
 
 
-router. post ("/",(req,res)=>{
+router.post("/", (req, res) => {
   loginController.loginFunc(req, res, usersSchema);
 });
 
