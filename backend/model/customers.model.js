@@ -1,36 +1,37 @@
-const mongo = require("mongoose");
-const{Schema} = mongo;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const customersSchema = new Schema({
-    accountNo : Number,
-    fullname : String,
-    mobile : String,
-    FatherName : String,
+    accountNo: { type: Number, unique: true, required: true },
+    fullname: { type: String, required: true },
+    mobile: String,
+    fatherName: String,
     email: {
         type: String,
-        unique : true
-
+        unique: true,
+        required: true,
+        match: [/.+\@.+\..+/, "Please fill a valid email address"]
     },
-    dob : String,
+    dob: String,
     gender: String,
-    currency : String,
-    key : String,
-    profile : String,
-    signature : String,
-    document : String, 
-    finalBalance : 
-    { type :Number,
-        default : 0
+    currency: String,
+    key: String,
+    profile: String,
+    signature: String,
+    document: String,
+    finalBalance: {
+        type: Number,
+        default: 0
     },
-    address : String,
-    userType : String,
-    branch : String, 
-    createdBy : String,
-    customerLoginId : String,
-    isActive : {
-
-        type : Boolean,
-        default : false
+    address: String,
+    userType: String,
+    branch: String,
+    createdBy: String,
+    customerLoginId: String,
+    isActive: {
+        type: Boolean,
+        default: false
     }
-}, {timestamps : true });
-module.exports + mongo.model("customer", customersSchema);
+}, { timestamps: true });
+
+module.exports = mongoose.model("customers", customersSchema);
