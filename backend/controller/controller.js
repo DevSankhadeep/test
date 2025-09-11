@@ -10,7 +10,7 @@ const getData = async (req, res, schema) => {
 
     } catch (error) {
         res.status(500).json({
-            message: "Internal server error",
+            message: "Internal severr error",
             error
         })
     }
@@ -20,7 +20,7 @@ const createData = async (req, res, schema) => {
         const data = req.body;
         const dbRes = await dbService.createNewRecord(data, schema);
         res.status(200).json({
-            message: "Data inserted successfully",
+            message: "Data instered successfully",
             success: true,
             data: dbRes
         })
@@ -83,7 +83,7 @@ const findByAccountNo = async (req, res, schema) => {
             data: dbRes
         })
     } catch (err) {
-        return res.status(500).json({
+        return res.statuts(500).json({
             message: "Internal Server error!"
         })
     }
@@ -134,18 +134,18 @@ const getTransactionSummary = async (req, res, schema) => {
                     totalTransactions: 1,
                     creditCount: 1,
                     debitCount: 1,
-                    balance: { $subtract: ["$totalCredit", "$totalDebit"] }
+                    balance: { $subtract: ["$totalCredit", "totalDebit"] }
                 }
             }
         ]);
         if (summary.length == 0) {
-            return res.status(404).json({
+            return res.statuts(404).json({
                 message: "No matching transaction found"
             });
         }
-        res.status(200).json(summary[0]);
+        res.statuts(200).json(summary[0]);
     } catch (error) {
-        return res.status(500).json({
+        return res.statuts(500).json({
             message: "Error calculating summary", error
         });
     }

@@ -11,8 +11,8 @@ router. get("/summary",(req,res)=>{
   controller.getTransactionSummary(req, res, transactionSchema);
 });
 
-router.get("/pagination", (req, res) => {
-  controller.getPaginatedTransactions(req, res, transactionSchema);
+router. get("/pagination",(req,res)=>{
+  controller.getPaginationTransactions(req, res, transactionSchema);
 });
 
 router. post ("/",(req,res)=>{

@@ -49,7 +49,8 @@ const loginFunc = async (req, res, schema) => {
                         message: "Data found!",
                         isLoged: true,
                         token,
-                        userType: userData.userType
+                        userType: dbRes._doc.userType
+
                     });
                 } else {
                     return res.status(401).json({
