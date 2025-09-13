@@ -56,7 +56,9 @@ export default function NewEmployee() {
       try {
         const httpRequest = http();
         const { data } = await httpRequest.get("/api/users");
-        setAllEmployee(data.data);
+        setAllEmployee(
+        data?.data.filter((item)=>item.userType!="customer")
+        );
         setFinalEmployee(data.data);
 
       } catch {
@@ -129,15 +131,17 @@ export default function NewEmployee() {
     try {
       setLoading(true)
       let finalObj = trimData(values)
+      delete finalobj.password;
       if (photo) {
         finalObj.profile = photo
       }
       const httpRequest = http()
       await httpRequest.put(`/api/users/${edit._id}`, finalObj)
       swal("Success", "Employee Record Update Successfully", "success")
-      empForm.resetFields()
-      setEdit(null)
-      setNumber(number + 1)
+      empForm.resetFields();
+      setEdit(null);
+      setNumber(number + 1);
+      setPhoto(null);
     } catch {
       swal("Warning", "Unable to update employee !", "warning")
     } finally {
@@ -311,7 +315,7 @@ export default function NewEmployee() {
                 </Item>
 
                 <Item label='Email' name="email" rules={[{ required: true }]}>
-                  <Input />
+                  <Input disabled ={edit ? true : false}/>
                 </Item>
 
                 <Item label='Password' name="password" rules={[{ required: true }]}>

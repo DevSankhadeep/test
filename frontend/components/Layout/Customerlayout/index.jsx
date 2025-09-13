@@ -18,7 +18,7 @@ const cookies = new Cookies()
 const { Header, Sider, Content } = Layout;
 
 
-const Employeelayout = ({ children }) => {
+const customerlayout = ({ children }) => {
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -32,22 +32,18 @@ const Employeelayout = ({ children }) => {
 
     const items = [
         {
-            key: '/employee',
+            key: '/customer',
             icon: <DashboardOutlined />,
-            label: <Link to="/employee">Dashboard</Link>,
+            label: <Link to="/customer">Dashboard</Link>,
         },
+        
         {
-            key: '/employee/new-account',
-            icon: <AccountBookOutlined />,
-            label: <Link to="/employee/new-account">New Account</Link>,
-        },
-        {
-          key: '/employee/new-transaction',
+          key: '/customer/transaction',
             icon: <BranchesOutlined />,
-            label: <Link to="/employee/new-transaction">New Transaction</Link>,
+            label: <Link to="/customer/transaction">Transactions</Link>,
         },
         {
-            key: '/employee/logout',
+            key: '/customer/logout',
             icon: <LogoutOutlined />,
             label: <Button
                 type='text'
@@ -100,4 +96,4 @@ const Employeelayout = ({ children }) => {
         </Layout>
     );
 };
-export default Employeelayout;
+export default customerlayout;

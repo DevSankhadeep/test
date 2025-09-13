@@ -1,5 +1,5 @@
 import { Button, Card, Form, Input, Table, Image, Popconfirm } from "antd"
-import Adminlayout from "../../Layout/Adminlayout"
+import Adminlayout from "../../layout/Adminlayout"
 import { DeleteOutlined, EditOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons"
 import { http, trimData } from "../../../modules/modules"
 import swal from "sweetalert"

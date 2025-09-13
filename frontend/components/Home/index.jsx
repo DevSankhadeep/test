@@ -1,13 +1,13 @@
-import React from 'react'
-import Homelayout from '../layout/homelayout'
-import Login from './Login'
+import Homelayout from "../Layout/Homelayout";
+import Login from "./Login";
 
-export default function Homepage() {
-  return (
-    <div>
-        <Homelayout>
-         <Login />
-        </Homelayout>
-    </div>
-  )
+
+const Homepage = () =>{
+
+return (
+<Homelayout>
+   <Login/>
+</Homelayout>
+)
 }
+export default Homepage;

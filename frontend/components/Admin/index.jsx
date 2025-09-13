@@ -1,13 +1,21 @@
 import Adminlayout from "../Layout/Adminlayout";
+import Dashboard from "../shared/Dashboard";
+import useSWR from "swr";
+import {fetchData} from "../../modules/modules";
 
-export default function Dashboard() {
+const AdminDashboard=()=> {
+  // get userinfo from sessionstorage
+  const userinfo=JSON.parse(sessionStorage.getItem("userInfo"));
+  const{data:trData,error:trError}=useSWR(`/api/transactions/summary?branch=${userinfo?.branch}`,
+    fetchData,
+    {
+    revalidateOnFocus:false,revalidateOnReconnect:false,refreshInterval:120000,
+    });
   return (
-    <div>
         <Adminlayout>
-            <h1 className="text-5xl font-bold text-red-500">
-                Welcome to admin dashboard
-            </h1>
+         <Dashboard data={trData && trData} />   
         </Adminlayout>
-    </div>
+    
   )
 }
+export default AdminDashboard;
