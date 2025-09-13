@@ -1,12 +1,15 @@
 import axios from "axios";
 
 // http request
-export const http = (accessToken=null) =>{
-axios.defaults.baseURL = import.meta.env.VITE_BASEURL;
+export const http = (accessToken = null) =>{
+    const instance = axios.create({
+        baseURL: import.meta.env.VITE_BASEURL,
+        withCredentials: true,
+    });
 if(accessToken){
-    axios.defaults.headers.common['Authorization'] ='Bearer ${accessToken}'
+    instance.defaults.headers.common['Authorization'] ='Bearer ${accessToken}';
 }
-return axios;
+return instance;
 }
 
 // trim data
@@ -15,7 +18,7 @@ export const trimData = (obj) =>{
     for(let key in obj){
         const value=obj[key];
         if(typeof value==='string'){
-         finalObj[key] =value .trim().toLowerCase() ; 
+         finalObj[key] =value .trim().toLocalLowerCase() ;
         }
         else if(typeof value==='number'||typeof value==='boolean'){
          finalObj[key] =value .toString();  
@@ -30,11 +33,11 @@ export const trimData = (obj) =>{
 export const fetchData=async(api)=>{
     try{
         const httpReq=http();
-        const response=await httpReq.get(api);
-        return response.data;
+        const {data}=await httpReq.get(api);
+        return data;
     }
-    catch(error){
-        throw error.response?.data|| error;
+    catch{
+        return null;
     }
 };
 
