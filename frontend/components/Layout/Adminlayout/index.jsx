@@ -8,6 +8,7 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     UserOutlined,
+    UserAddOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
