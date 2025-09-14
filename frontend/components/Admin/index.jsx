@@ -13,7 +13,9 @@ const AdminDashboard=()=> {
     });
   return (
         <Adminlayout>
-         <Dashboard data={trData && trData} />   
+         <Dashboard data={trData && trData} /> 
+        {/* <Dashboard data={trData ?? { totalcredit: 0 }} />*/}
+
         </Adminlayout>
     
   )
