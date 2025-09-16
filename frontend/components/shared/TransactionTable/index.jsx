@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import {Table} from "antd";
-import { formatData , http }  from "../../modules/modules";
+import { formData , http }  from "../../../modules/modules";
 const TransactionTable=({query = {}})=>{
     const [data,setData]=useState([]);
     const [total,setTotal]=useState(0);
@@ -22,7 +22,7 @@ const TransactionTable=({query = {}})=>{
         if(branch)searchparams.append('branch',branch);
         try{
             const httpReq=http();
-            const res=await httpReq.get(`/api/transactions/pageination?${searchparams.toString()}`);
+            const res=await httpReq.get(`/api/transaction/pagination?${searchparams.toString()}`);
             setData(res.data.data);
             setTotal(res.data.total);
             setPagination({
@@ -61,11 +61,23 @@ const TransactionTable=({query = {}})=>{
             title:'Amount',
             dataIndex:'transactionAmount',
             key:'TransactionAmount',
+            render:(value)=> isNaN(value)?'N/A':value
         }
     ];
         return (
     <div className="p-4">
-        <Table rowKey="_id" columns={columns} dataSource={data} pagination={{total:total,current:pagination.current,pageSize:pagination.pageSize}} loading={loading} onChange={handleTableChange} />
+        <Table 
+        rowKey="_id" 
+        columns={columns} 
+        dataSource={data} 
+        pagination={{
+            total:total,
+            current:pagination.current,
+            pageSize:pagination.pageSize
+            }}
+             loading={loading}
+              onChange={handleTableChange} 
+              />
     </div>  
   );
 };  

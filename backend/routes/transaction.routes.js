@@ -12,7 +12,7 @@ router. get("/summary",(req,res)=>{
 });
 
 router. get("/pagination",(req,res)=>{
-  controller.getPaginationTransactions(req, res, transactionSchema);
+  controller.getPaginatedTransactions(req, res, transactionSchema);
 });
 
 router. post ("/",(req,res)=>{

@@ -32,8 +32,8 @@ const Dashboard = ({ data }) => {
                         </div>
                         <Divider type="vertical" className="h-24" />
                         <div>
-                            <h1 className="text-3xl font-bold text-green">{data.totalcredit} T</h1>
-                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor((data.totalcredit) + (data.totalcredit * 50) / 100)}</p>
+                            <h1 className="text-3xl font-bold text-green">{data?.totalcredit||0} T</h1>
+                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor(((data?.totalcredit||0) + ((data?.totalcredit||0) * 50) / 100))}</p>
                         </div>
                     </div>
                 </Card>
@@ -46,8 +46,8 @@ const Dashboard = ({ data }) => {
                         </div>
                         <Divider type="vertical" className="h-24" />
                         <div>
-                            <h1 className="text-3xl font-bold text-orange">{data.totalDebit} T</h1>
-                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor((data.totalDebit) + (data.totalDebit * 50) / 100)}</p>
+                            <h1 className="text-3xl font-bold text-orange">{data?.totalDebit||0} T</h1>
+                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor((data?.totalDebit||0) + ((data?.totalDebit||0) * 50) / 100)}</p>
                         </div>
                     </div>
                 </Card>
@@ -60,8 +60,8 @@ const Dashboard = ({ data }) => {
                         </div>
                         <Divider type="vertical" className="h-24" />
                         <div>
-                            <h1 className="text-3xl font-bold text-blue">{data.balance} T</h1>
-                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor((data.balance) + (data.balance * 50) / 100)}</p>
+                            <h1 className="text-3xl font-bold text-blue">{data?.balance||0} T</h1>
+                            <p className="text-lg mt-1 text-Zinc-400">{Math.floor((data?.balance||0) + ((data?.balance ||0) * 50) / 100)}</p>
                         </div>
                     </div>
                 </Card>

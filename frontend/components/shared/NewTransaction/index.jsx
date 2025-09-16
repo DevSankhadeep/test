@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import{card, Form,Image,Input,Empty,Select,Button, message} from"antd";
+import{Card, Form,Image,Input,Empty,Select,Button, message} from"antd";
 import { useState } from "react";
 import{http, trimData} from "../../../modules/modules";
 
@@ -26,7 +26,7 @@ const NewTransaction=()=>{
             finalobj.currentBalance=accountDetail.finalBalance;
             finalobj.customerId=accountDetail._id;
             finalobj.accountNo=accountDetail.accountNo;
-            finalobj.branch=userInfo.branch;
+            finalobj.branch=userinfo.branch;
             const httpReq=http();
             await httpReq.post(`/api/transaction`,finalobj);
             await httpReq.put(`/api/customers/${accountDetail._id}`,{finalBalance:balance});
@@ -57,12 +57,12 @@ const NewTransaction=()=>{
     return(
         <div>
             {contextHolder}
-            <card
+            <Card
                 title="New Transaction"
                 extra={
                     <Input 
                     onChange={(e)=>setAccountNo(e.target.value)}
-                    Placeholder="Enter account number"
+                    placeholder="Enter account number"
                     addonAfter={<SearchOutlined
                     onClick={searchByAccountNo}
                     style={{cursor:"pointer"}}/>}
@@ -88,8 +88,11 @@ const NewTransaction=()=>{
                                 <b>Balance:</b>
                                 <b>
                                     {
-                                    accountDetail?.currency==="inr"?"R":"$"
+                                    accountDetail?.currency==="inr"?"₹":"$"
                                     }
+                                    {Number.isFinite(Number(accountDetail?.finalBalance))
+                                    ? Number(accountDetail?.finalBalance)
+                                    :"0"}
                                     {accountDetail?.finalBalance}
                                     </b>
                         </div>
@@ -111,10 +114,10 @@ const NewTransaction=()=>{
                         layout="vertical">
                             <div className=" grid md:grid-cols-2 gap-x-3">
                                 <Form.Item label="Transaction Type" rules={[{required:true}]} name="transactionType">
-                                    <select Placeholder="Transaction Type" className="w-full" options={[{value:"cr",label:"CR"},{value:"dr",label:"DR"}]}/>
+                                    <Select placeholder="Transaction Type" className="w-full" options={[{value:"cr",label:"CR"},{value:"dr",label:"DR"}]}/>
                                 </Form.Item>
                                 <Form.Item label="Transaction Amount" rules={[{required:true}]} name="transactionAmount">
-                                    <Input Placeholder="500.00" type="number"/>
+                                    <Input placeholder="500.00" type="number"/>
                                 </Form.Item>
                             </div>
                             <Form.Item label="Refrence" name="refrence">
@@ -128,7 +131,7 @@ const NewTransaction=()=>{
              </div>
              :<Empty/>
                    }
-        </card>
+        </Card>
     </div>
     )
 }

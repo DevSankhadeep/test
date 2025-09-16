@@ -1,5 +1,5 @@
-import customerlayout from "../Layout/Customerlayout";
-import Dashboard from "../../shared/Dashboard";
+import Customerlayout from "../Layout/Customerlayout";
+import Dashboard from "../shared/Dashboard";
 import useSWR from "swr";
 import {fetchData} from "../../modules/modules";
 const CustomerDashboard=()=>{
@@ -11,9 +11,9 @@ const CustomerDashboard=()=>{
     revalidateOnFocus:false,revalidateOnReconnect:false,refreshInterval:120000,
     });
     return(
-        <customerlayout>
+        <Customerlayout>
             <Dashboard data={trData && trData} />
-        </customerlayout>
+        </Customerlayout>
     )
 }
 export default CustomerDashboard ;

@@ -1,12 +1,12 @@
-import customerlayout from "../../Layout/Customerlayout";
+import Customerlayout from "../../Layout/Customerlayout";
 import TransactionTable from "../../shared/TransactionTable";
 const CustomerTransaction=()=>{
     //get userInfo from sessionstorage
     const userInfo=JSON.parse(sessionStorage.getItem('userInfo'));
     return(
-        <customerlayout>
+        <Customerlayout>
             <TransactionTable query={{accountNo:userInfo?.accountNo,branch:userInfo?.branch}}/>
-        </customerlayout>
+        </Customerlayout>
     )
 }
 export default CustomerTransaction;
